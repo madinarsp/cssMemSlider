@@ -10,27 +10,40 @@
 <body>
     <header>
         <div class="container">
-
+            <h1>Welcome to Meme Slider</h1>
         </div>
     </header>
     <main>
         <div class="container">
             <div class="slider-wrapper">
+                <input type="radio" name="slider-dot" id="dot1" checked>
+                <input type="radio" name="slider-dot" id="dot2">
+                <input type="radio" name="slider-dot" id="dot3">
                 <div class="images-slider">
-                    <img class="meme-img active" src="assets/images/youth-meme.jpg" alt="meme">
-                    <img class="meme-img" src="assets/images/growing-up-meme.jpg" alt="meme">
-                    <img class="meme-img" src="assets/images/future-female.png" alt="meme">
+                    <div class="image-slide slide-start">
+                        <img class="meme-img" src="assets/images/youth-meme.jpg" alt="meme">
+                    </div>
+                    <div class="image-slide">
+                        <img class="meme-img" src="assets/images/growing-up-meme.jpg" alt="meme">
+                    </div>
+                    <div class="image-slide">
+                        <img class="meme-img" src="assets/images/future-female.png" alt="meme">
+                    </div>
                 </div>
                 <div class="text-and-controls-section">
-                    <div class="slider-descriptions">
-                        <p class="meme-description active">meme 1</p>
-                        <p class="meme-description">meme 2</p>
-                        <p class="meme-description">meme 3</p>
+                    <div class="descriptions-slider-wrapper">
+                        <div class="descriptions-slider">
+                            <p class="meme-description slide-start">meme 1</p>
+                            <p class="meme-description">meme 222222222</p>
+                            <p class="meme-description">meme 33333</p>
+                        </div>
                     </div>
+                    
                     <div class="slider-controls">
-                        <span class="slider-dot active"></span>
-                        <span class="slider-dot"></span>
-                        <span class="slider-dot"></span>
+
+                        <label class="dot-label" for="dot1"></label>
+                        <label class="dot-label" for="dot2"></label>
+                        <label class="dot-label" for="dot3"></label>
                     </div>
                 </div>
             </div>
