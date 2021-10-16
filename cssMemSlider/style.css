@@ -174,4 +174,12 @@ input[type="radio"] {
         border: 1vw solid #ffffff;
     }
 
+    .meme-description {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
 }
