@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 .container {
     width: 90vw;
     margin: 0 auto;
@@ -30,7 +34,6 @@ input[type="radio"] {
 .text-and-controls-section {
     height: fit-content;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -110,4 +113,30 @@ input[type="radio"] {
 #dot3:checked ~ .text-and-controls-section label[for="dot3"],
 #dot4:checked ~ .text-and-controls-section label[for="dot4"] {
     background-color: maroon;
+}
+
+@media (max-width: 425px) {
+    .slider-wrapper {
+        row-gap: 1vw;
+    }
+
+    .text-and-controls-section {
+        flex-direction: column-reverse;
+        row-gap: 1vw;
+    }
+
+    .descriptions-slider-wrapper {
+        width: 100%;
+    }
+
+    .slider-controls {
+        align-self: center;
+    }
+
+    .dot-label {
+        width: 4vw;
+        height: 4vw;
+        border: 1vw solid #ffffff;
+    }
+
 }
