@@ -86,7 +86,6 @@ input[type="radio"] {
     width: 400%;
     height: 40vw;
     display: flex;
-    background-color: lightskyblue;
 }
 
 .image-slide {
@@ -94,11 +93,12 @@ input[type="radio"] {
     text-align: center;
     width: 25%;
     transition: all 0.5s ease-in-out;
+    overflow: hidden;
 }
 
 .meme-img {
     margin: 0 auto;
-    height: 100%;
+    width: 100%;
 }
 
 .descriptions-slider-wrapper {
