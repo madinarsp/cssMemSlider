@@ -100,3 +100,15 @@ input[type="radio"] {
 #dot3:checked ~ .text-and-controls-section .slide-start {
     margin-left: -50%;
 }
+
+#dot4:checked ~ .images-slider .slide-start,
+#dot4:checked ~ .text-and-controls-section .slide-start {
+    margin-left: -75%;
+}
+
+#dot1:checked ~ .text-and-controls-section label[for="dot1"],
+#dot2:checked ~ .text-and-controls-section label[for="dot2"],
+#dot3:checked ~ .text-and-controls-section label[for="dot3"],
+#dot4:checked ~ .text-and-controls-section label[for="dot4"] {
+    background-color: maroon;
+}
