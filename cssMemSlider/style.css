@@ -15,7 +15,7 @@
 /* Slider */
 
 input[type="radio"] {
-    visibility: hidden;
+    display: none;
 }
 
 .slider-wrapper {
