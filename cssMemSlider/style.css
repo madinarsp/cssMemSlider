@@ -30,6 +30,14 @@
     font-weight: 700;
 }
 
+/* Global variables */
+
+:root {
+    --bg-opacity: rgba(197, 203, 227, 0.7);
+    --dots-active-color: #e98074;
+    --dots-main-color: #4056a1;
+}
+
 /* Remove default styles */
 
 * {
@@ -38,16 +46,24 @@
     box-sizing: border-box;
 }
 
+/* General styles */
+
 html {
     font-size: 16px;
 }
 
 body {
-    background-color: #efe2ba;
+    background: url("assets/images/are-you-ready-to-laugh.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #c5cbe3;
+    padding-top: 3vw;
+    padding-bottom: 7vw;
 }
 
 .container {
-    width: 90vw;
+    width: 80vw;
     margin: 0 auto;
 }
 
@@ -56,8 +72,9 @@ h1 {
     font-weight: 700;
     font-size: 2.5rem;
     text-align: center;
+    padding-bottom: 2vw;
+    color: #4056a1;
 }
-
 
 /* Slider */
 
@@ -72,6 +89,9 @@ input[type="radio"] {
     flex-direction: column;
     row-gap: 1rem;
     overflow: hidden;
+    background-color: var(--bg-opacity);
+    border-radius: 2rem;
+    padding: 1vw 1vw;
 }
 
 .text-and-controls-section {
@@ -87,16 +107,17 @@ input[type="radio"] {
 .dot-label {
     width: 4rem;
     height: 4rem;
-    background-color: #4056a1;
-    border: 1rem solid #efe2ba;
+    background-color: transparent;
+    background-clip: content-box;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .inner-dot-label {
-    width: 1rem;
-    height: 1rem;
-    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--dots-main-color);
+    border: 0.4rem solid var(--dots-main-color);
     border-radius: 50%;
     cursor: pointer;
     transform: translate(50%, 50%);
@@ -104,7 +125,7 @@ input[type="radio"] {
 
 .images-slider {
     width: 400%;
-    height: 40vw;
+    height: 30vw;
     display: flex;
 }
 
@@ -114,12 +135,13 @@ input[type="radio"] {
     width: 25%;
     transition: all 0.5s ease-in-out;    /* transition создает эффект анимации */
     overflow: hidden;
-    background-color: #c5cbe3;
+    
 }
 
 .meme-img {
     margin: 0 auto;
     height: 100%;
+    border-radius: 1rem;
 }
 
 .descriptions-slider-wrapper {
@@ -143,7 +165,6 @@ input[type="radio"] {
 .slider-controls {
     width: fit-content;
 }
-
 
 #dot1:checked ~ .images-slider .slide-start,
 #dot1:checked ~ .text-and-controls-section .slide-start {
@@ -169,16 +190,46 @@ input[type="radio"] {
 #dot2:checked ~ .text-and-controls-section label[for="dot2"] .inner-dot-label,
 #dot3:checked ~ .text-and-controls-section label[for="dot3"] .inner-dot-label,
 #dot4:checked ~ .text-and-controls-section label[for="dot4"] .inner-dot-label {
-    background-color: #efe2ba;
+    background-color: transparent;
 }
 
-label:hover {
-    background-color: #e98074;
+label:hover .inner-dot-label {
+    border-color: var(--dots-active-color);
+    background-color: var(--dots-active-color);
+}
+
+label:hover .inner-dot-label:focus {
+    border-color: var(--dots-active-color);
+    background-color: transparent;
 }
 
 @media (max-width: 425px) {
+
+    html {
+        height: 100vh;
+    }
+
+    body {
+        background: url("assets/images/Homer-mobile.png");
+        background-size: cover;
+        background-position-x: center;
+        background-repeat: no-repeat;
+        background-color: #c5cbe3;
+        padding-top: 20vw;
+        padding-bottom: 0;
+    }
+
+    .container {
+        width: 95vw;
+    }
+
     .slider-wrapper {
         row-gap: 1vw;
+        border-radius: 0.5rem;
+    }
+
+    .images-slider {
+        height: 55vw;
     }
 
     .text-and-controls-section {
@@ -192,13 +243,7 @@ label:hover {
 
     .slider-controls {
         align-self: center;
-    }
-
-    .dot-label {
-        width: 4vw;
-        height: 4vw;
-        border: 1vw solid #ffffff;
-    }
+    }  
 
     .meme-description {
         font-size: 1rem;
@@ -206,6 +251,17 @@ label:hover {
 
     h1 {
         font-size: 1.5rem;
+    }
+
+    .dot-label {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .inner-dot-label {
+        width: 1rem;
+        height: 1rem;
+        border-width: 0.3rem;
     }
 
 }
