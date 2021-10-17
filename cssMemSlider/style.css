@@ -46,20 +46,12 @@
     box-sizing: border-box;
 }
 
-/* General styles */
-
-html {
-    font-size: 16px;
-}
+/* General elements styles */
 
 body {
-    background: url("assets/images/are-you-ready-to-laugh.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: #c5cbe3;
-    padding-top: 3vw;
-    padding-bottom: 7vw;
+    height: 100vh;
+    padding-top: 2vw;
+    background: #c5cbe3 no-repeat bottom/cover url("assets/images/are-you-ready-to-laugh.jpeg");
 }
 
 .container {
@@ -68,40 +60,75 @@ body {
 }
 
 h1 {
-    font-family: "Quicksand", sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
+    font: 700 3rem "Quicksand", sans-serif;
     text-align: center;
-    padding-bottom: 2vw;
-    color: #4056a1;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px var(--dots-main-color);
 }
 
-/* Slider */
+/* Slider styles */
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    height: fit-content;
+    padding: 1vw 1vw;
+    overflow: hidden;
+    background-color: var(--bg-opacity);
+    border-radius: 2rem;
+}
 
 input[type="radio"] {
     display: none;
 }
 
-.slider-wrapper {
-    width: 100%;
-    height: fit-content;
+.images-slider {
     display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
+    width: 400%;
+    height: 30vw;
+}
+
+.image-slide {
+    display: inline-block;
+    width: 25%;
     overflow: hidden;
-    background-color: var(--bg-opacity);
-    border-radius: 2rem;
-    padding: 1vw 1vw;
+    text-align: center;
+    transition: all 0.5s ease-in-out;    /* transition создает эффект анимации */
+}
+
+.meme-img {
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 1rem;
 }
 
 .text-and-controls-section {
-    height: fit-content;
     display: flex;
     justify-content: space-between;
+    height: fit-content;
+}
+
+.descriptions-slider-wrapper {
+    width: min-content;
+    overflow: hidden;
+}
+
+.descriptions-slider {
+    display: flex;
+    width: 400%;
+}
+
+.meme-description {
+    width: 25%;
+    font: 500 2rem "Quicksand", sans-serif;
+    transition: all 0.2s ease;    /* transition создает эффект анимации */
 }
 
 .slider-controls {
     display: flex;
+    width: fit-content;
 }
 
 .dot-label {
@@ -119,52 +146,11 @@ input[type="radio"] {
     background-color: var(--dots-main-color);
     border: 0.4rem solid var(--dots-main-color);
     border-radius: 50%;
-    cursor: pointer;
     transform: translate(50%, 50%);
+    cursor: pointer;
 }
 
-.images-slider {
-    width: 400%;
-    height: 30vw;
-    display: flex;
-}
-
-.image-slide {
-    display: inline-block;
-    text-align: center;
-    width: 25%;
-    transition: all 0.5s ease-in-out;    /* transition создает эффект анимации */
-    overflow: hidden;
-    
-}
-
-.meme-img {
-    margin: 0 auto;
-    height: 100%;
-    border-radius: 1rem;
-}
-
-.descriptions-slider-wrapper {
-    width: min-content;
-    overflow: hidden;
-}
-
-.descriptions-slider {
-    width: 400%;
-    display: flex;
-}
-
-.meme-description {
-    width: 25%;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 500;
-    font-size: 2rem;
-    transition: all 0.2s ease;    /* transition создает эффект анимации */
-}
-
-.slider-controls {
-    width: fit-content;
-}
+/** Slider functionality **/
 
 #dot1:checked ~ .images-slider .slide-start,
 #dot1:checked ~ .text-and-controls-section .slide-start {
@@ -186,22 +172,26 @@ input[type="radio"] {
     margin-left: -75%;
 }
 
-#dot1:checked ~ .text-and-controls-section label[for="dot1"] .inner-dot-label,
-#dot2:checked ~ .text-and-controls-section label[for="dot2"] .inner-dot-label,
-#dot3:checked ~ .text-and-controls-section label[for="dot3"] .inner-dot-label,
-#dot4:checked ~ .text-and-controls-section label[for="dot4"] .inner-dot-label {
+/** Slider controls interactivity **/
+
+#dot1:checked ~ .text-and-controls-section .dot-label[for="dot1"] .inner-dot-label,
+#dot2:checked ~ .text-and-controls-section .dot-label[for="dot2"] .inner-dot-label,
+#dot3:checked ~ .text-and-controls-section .dot-label[for="dot3"] .inner-dot-label,
+#dot4:checked ~ .text-and-controls-section .dot-label[for="dot4"] .inner-dot-label {
     background-color: transparent;
 }
 
-label:hover .inner-dot-label {
-    border-color: var(--dots-active-color);
+.dot-label:hover .inner-dot-label {
     background-color: var(--dots-active-color);
+    border-color: var(--dots-active-color);
 }
 
-label:hover .inner-dot-label:focus {
-    border-color: var(--dots-active-color);
+.dot-label:hover .inner-dot-label:focus {
     background-color: transparent;
+    border-color: var(--dots-active-color);
 }
+
+/* Style adjustments for mobile screens */
 
 @media (max-width: 425px) {
 
@@ -210,13 +200,9 @@ label:hover .inner-dot-label:focus {
     }
 
     body {
-        background: url("assets/images/Homer-mobile.png");
-        background-size: cover;
-        background-position-x: center;
-        background-repeat: no-repeat;
-        background-color: #c5cbe3;
         padding-top: 20vw;
         padding-bottom: 0;
+        background: #c5cbe3 no-repeat center/cover url("assets/images/Homer-mobile.png");
     }
 
     .container {
