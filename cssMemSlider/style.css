@@ -1,0 +1,253 @@
+/* Font */
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("assets/fonts/Quicksand/static/Quicksand-Light.ttf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("assets/fonts/Quicksand/static/Quicksand-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("assets/fonts/Quicksand/static/Quicksand-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("assets/fonts/Quicksand/static/Quicksand-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("assets/fonts/Quicksand/static/Quicksand-Bold.ttf");
+    font-weight: 700;
+}
+
+/* Global variables */
+
+:root {
+    --bg-opacity: rgba(197, 203, 227, 0.7);
+    --dots-active-color: #e98074;
+    --dots-main-color: #4056a1;
+}
+
+/* Remove default styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General elements styles */
+
+body {
+    height: 100vh;
+    padding-top: 2vw;
+    background: #c5cbe3 no-repeat bottom/cover url("assets/images/are-you-ready-to-laugh.jpeg");
+}
+
+.container {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+h1 {
+    font: 700 3rem "Quicksand", sans-serif;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px var(--dots-main-color);
+}
+
+/* Slider styles */
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    height: fit-content;
+    padding: 1vw 1vw;
+    overflow: hidden;
+    background-color: var(--bg-opacity);
+    border-radius: 2rem;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.images-slider {
+    display: flex;
+    width: 400%;
+    height: 30vw;
+}
+
+.image-slide {
+    display: inline-block;
+    width: 25%;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.5s ease-in-out;    /* transition создает эффект анимации */
+}
+
+.meme-img {
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.text-and-controls-section {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.descriptions-slider-wrapper {
+    width: min-content;
+    overflow: hidden;
+}
+
+.descriptions-slider {
+    display: flex;
+    width: 400%;
+}
+
+.meme-description {
+    width: 25%;
+    font: 500 2rem "Quicksand", sans-serif;
+    transition: all 0.2s ease;    /* transition создает эффект анимации */
+}
+
+.slider-controls {
+    display: flex;
+    width: fit-content;
+}
+
+.dot-label {
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    background-clip: content-box;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.inner-dot-label {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--dots-main-color);
+    border: 0.4rem solid var(--dots-main-color);
+    border-radius: 50%;
+    transform: translate(50%, 50%);
+    cursor: pointer;
+}
+
+/** Slider functionality **/
+
+#dot1:checked ~ .images-slider .slide-start,
+#dot1:checked ~ .text-and-controls-section .slide-start {
+    margin-left: 0%;
+}
+
+#dot2:checked ~ .images-slider .slide-start,
+#dot2:checked ~ .text-and-controls-section .slide-start {
+    margin-left: -25%;
+}
+
+#dot3:checked ~ .images-slider .slide-start,
+#dot3:checked ~ .text-and-controls-section .slide-start {
+    margin-left: -50%;
+}
+
+#dot4:checked ~ .images-slider .slide-start,
+#dot4:checked ~ .text-and-controls-section .slide-start {
+    margin-left: -75%;
+}
+
+/** Slider controls interactivity **/
+
+#dot1:checked ~ .text-and-controls-section .dot-label[for="dot1"] .inner-dot-label,
+#dot2:checked ~ .text-and-controls-section .dot-label[for="dot2"] .inner-dot-label,
+#dot3:checked ~ .text-and-controls-section .dot-label[for="dot3"] .inner-dot-label,
+#dot4:checked ~ .text-and-controls-section .dot-label[for="dot4"] .inner-dot-label {
+    background-color: transparent;
+}
+
+.dot-label:hover .inner-dot-label {
+    background-color: var(--dots-active-color);
+    border-color: var(--dots-active-color);
+}
+
+.dot-label:hover .inner-dot-label:focus {
+    background-color: transparent;
+    border-color: var(--dots-active-color);
+}
+
+/* Style adjustments for mobile screens */
+
+@media (max-width: 425px) {
+
+    html {
+        height: 100vh;
+    }
+
+    body {
+        padding-top: 20vw;
+        padding-bottom: 0;
+        background: #c5cbe3 no-repeat center/cover url("assets/images/Homer-mobile.png");
+    }
+
+    .container {
+        width: 95vw;
+    }
+
+    .slider-wrapper {
+        row-gap: 1vw;
+        border-radius: 0.5rem;
+    }
+
+    .images-slider {
+        height: 55vw;
+    }
+
+    .text-and-controls-section {
+        flex-direction: column-reverse;
+        row-gap: 1vw;
+    }
+
+    .descriptions-slider-wrapper {
+        width: 100%;
+    }
+
+    .slider-controls {
+        align-self: center;
+    }  
+
+    .meme-description {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .dot-label {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .inner-dot-label {
+        width: 1rem;
+        height: 1rem;
+        border-width: 0.3rem;
+    }
+
+}
